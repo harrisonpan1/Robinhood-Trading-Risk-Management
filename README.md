@@ -1,10 +1,18 @@
 # Robinhood-Trading-Journal
 
-This project is python scripts, which uses mainly [Robinhood](https://robinhood.com)'s 
-private API and [Dash feature from Plotly](https://plotly.com/dash/open-source/) for 
-creating visualized trading journal. You can varify and download to use it as personal trading journal for Robinhood. 
+This project is python scripts, which uses supported Robinhood API, [robin_stocks](https://github.com/jmfernandes/robin_stocks), and [Dash feature from Plotly](https://plotly.com/dash/open-source/) for 
+creating visualized trading journal. You can varify and download to use it as personal trading journal for Robinhood and option risk management. 
+<br><br>
 
-Inspired and based on python projects, [Josh Fraser's robinhood-to-csv](https://github.com/joshfraser/robinhood-to-csv/), and [Rohan Pai & Adithya Balaji's Robinhood Unofficial](https://github.com/robinhood-unofficial/pyrh).
+> **Note: robin_stocks package was [not fully updated](https://stackoverflow.com/questions/79291035/robin-stocks-robinhood-authentication-stopped-working). Need to pull the repo manually instead of pip update.** 
+~~~
+>> cd [PATH]/Robinhood-trading-journal/dashApp
+>> git clone https://github.com/jmfernandes/robin_stocks.git
+>> cd robin_stocks
+>> pip install .
+~~~
+<br>
+
 
 The reason behind creating is that new age invester's trading habits in robinhood is very risky and rewarding and 
 there is no budget tool (there are some pricey tools that can extract robinhood trades and then some requiering you to 
@@ -18,9 +26,9 @@ Where as day trader or swing trader can analyze their trading habits using visul
 > **Note: Python scripts are in python3.** 
 <br>
 
-The defalts endpoints to access robinhood api is in [Robinhood_Base.py](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/Robinhood_Base.py), 
+The defalts endpoints to access robinhood api is in [login.py](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/Robinhood_Base.py), 
 one of the convienince I made in my script for login is that it is MFA app compatiable login, which means you can use your google code auth or duo to add MFA code to login. 
-Although I haven't worked on more methods since that are not useful in regards to this project, but you can give it a try. 
+Although I haven't worked on more methods since that are not useful in regards to this project, but you can give it a try.  
 
 The [Robin_hood.py](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/Robin_hood.py) scripts have methods on accessing order history for stocks and options, (will try to work on crypto later), current portfolio and dataframe of order history. 
 Benefit of this script is that it accounts of stocks splits while calculating for profit/loss, if security was bought before split and sold after split. Although calculation are based on FIFO basis as per [Robinhood's default cost basis](https://robinhood.com/us/en/support/articles/cost-basis/). 
@@ -95,33 +103,7 @@ Below is screen shots of final app, also stored in snapshots folder.
   
 # Credits/Acknowledgement
 
-Project: [pyrh - Unofficial Robinhood API](https://github.com/robinhood-unofficial) <br>
-Copyright (c) 2020 Unofficial Robinhood Python API Developers <br>
-License (MIT) https://github.com/robinhood-unofficial/pyrh/blob/master/LICENSE 
-<br>
-
-Project: [Robinhood to CSV](https://github.com/joshfraser/robinhood-to-csv) <br>
-Copyright (c) 2015 Josh Fraser <br>
-Copyright (c) 2015 Rohan Pai <br>
-License (MIT) https://github.com/joshfraser/robinhood-to-csv/blob/master/LICENSE 
-<br>
-
-Project: [Plotly-Dash](https://github.com/plotly/dash) <br>
-Copyright (c) 2021 Plotly, Inc <br>
-License (MIT) https://github.com/plotly/dash/blob/dev/LICENSE <br>
-Documentation : https://dash.plotly.com/ 
-<br>
-
-Author: Charming Data <br>
-Github Repo: [Coding-with-Adam/Dash-by-Plotly](https://github.com/Coding-with-Adam/Dash-by-Plotly)<br>
-Youtube Link: https://www.youtube.com/channel/UCqBFsuAz41sqWcFjZkqmJqQ 
-<br>
-
-Author: Gil Yehuda (credit for Credits Template) <br>
-Quora Link: https://www.quora.com/How-do-I-properly-credit-an-original-codes-developer-for-her-open-source-contribution <br>
-
-Community Credits: Python Community, Stack Exchange Community, Plolty Community, Web-Developers Community
-
+Project: [Robinhood-Trading-Journal]（https://github.com/virajkothari7/Robinhood-Trading-Journal)
 <br>
 
 # License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/LICENSE)

@@ -1,0 +1,3 @@
+[submodule "dashApp/robin_stocks"]
+	path = dashApp/robin_stocks
+	url = https://github.com/jmfernandes/robin_stocks.git
