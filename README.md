@@ -14,99 +14,25 @@ creating visualized trading journal. You can varify and download to use it as pe
 <br>
 
 
-The reason behind creating is that new age invester's trading habits in robinhood is very risky and rewarding and 
-there is no budget tool (there are some pricey tools that can extract robinhood trades and then some requiering you to 
-have csv from robinhood as robinhood doesn't give until asked from one of thier representive!), this can calculute one's ongoing gains, 
-the person can actually know how much profit/loss is made in one week, month or quarter. 
-
-Most useful case scenerio is paying one's quarterly estimated tax based on your estimated calculated gain using this. 
-Where as day trader or swing trader can analyze their trading habits using visulized trading journal, run the script on day's end to know net profit of the day. 
+The reason behind creating is that new age invester's trading habits in robinhood is very risky and rewarding and there is no budget tool or risk management tool, especially for option trading. 
 <br><br>
 
-> **Note: Python scripts are in python3.** 
+> **Note: Python version=3.12.11.** 
 <br>
 
-The defalts endpoints to access robinhood api is in [login.py](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/Robinhood_Base.py), 
-one of the convienince I made in my script for login is that it is MFA app compatiable login, which means you can use your google code auth or duo to add MFA code to login. 
-Although I haven't worked on more methods since that are not useful in regards to this project, but you can give it a try.  
+The defalts endpoints to access robinhood api is in [login.py](https://github.com/harrisonpan1/Robinhood-Trading-Risk-Management/blob/main/dashApp/login.py), it is built based on robin_stock and has some helper functions to get trading info you want.  
 
-The [Robin_hood.py](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/Robin_hood.py) scripts have methods on accessing order history for stocks and options, (will try to work on crypto later), current portfolio and dataframe of order history. 
-Benefit of this script is that it accounts of stocks splits while calculating for profit/loss, if security was bought before split and sold after split. Although calculation are based on FIFO basis as per [Robinhood's default cost basis](https://robinhood.com/us/en/support/articles/cost-basis/). 
-However, wash sale calculation are not accounted. Also options calculation were quite complicated so at moment it only accounts for bought and sold or expired. If there is covered sell meaning that you sold option contract based on stocks owned, and option excersiced are not accounted. Hence those entities  are not included in calculations.
+The [trading_journal.py](https://github.com/harrisonpan1/Robinhood-Trading-Risk-Management/blob/main/dashApp/trading_journal.py) scripts have methods on accessing order history for stocks and options, current open postions for stock and options, greek risk managment tool for entire portfolio.
+Its calculation are on FIFO basis as per [Robinhood's default cost basis](https://robinhood.com/us/en/support/articles/cost-basis/). 
 
-Each Layout file in dashApp/app folder is each webpage layout's python scripts, it consists dash bootstrap, container, and html components as well as callback methods regarding each webpage are in same corresponding python script. For further understanding look [dash documentation](https://dash.plotly.com/)
+Refer to [risk_position_manager.ipynb](https://github.com/harrisonpan1/Robinhood-Trading-Risk-Management/blob/main/dashApp/risk_position_manager.ipynb) for an example 
 <br>
 
 
-## Installing github repo to local machine and dependency to run this app
 
-You can manually download zip file from here, click on Code and select Download Zip
-
-> **_Requirements:_**  python 3+ [Install Python](https://www.python.org/downloads/)<br> **_Optional:_** Git [Install Git](https://git-scm.com/downloads). If zip downloaded then directly go to step 3 and 4
-
-~~~
-Cloning this repo:
-Change directory to desired location!!!
-
->> cd Documents
->> git clone https://github.com/virajkothari7/Robinhood-trading-journal.git
->> cd Robinhood-trading-journal
->> pip install -r requirements.txt
-
-~~~
-
-
-## Getting Started 
-For detailed instruction look Instruction.txt
-~~~
-Getting data from Robinhood and have visualize it on local server using a web browser!!
-
->> cd [PATH]/Robinhood-trading-journal/dashApp
->> python Robin_hood.py  #To get data from Robinhood
->> python index.py  #Will open a local server, for best view results, try using google chrome, safari or edge
-
-~~~
-
-
-## Final View
-
-After getting data by running "Robin_hood.py" script, and running "index.py" to have local server running dash app.
-Below is screen shots of final app, also stored in snapshots folder.
-<br><br>
-<table>
-  <tr>
-    <td><img src=https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/snapshots/snapshot_1.gif></td>
-    <td><img src=https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/snapshots/snapshot_3.gif></td>
-  </tr>
-  <tr>
-    <td><img src=https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/snapshots/snapshot_2.gif></td>
-    <td><img src=https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/snapshots/snapshot_5.gif></td>
-  </tr>
-</table>
-<br> 
-
-
-## Technologies
-- plotly==5.1.0
-- dash==1.21.0
-- dash_table==4.12.0
-- dash_core_components==1.17.1
-- dash_html_components==1.1.4
-- dash_bootstrap_components==0.12.2
-- numpy==1.20.3
-- pandas==1.3.0
-- requests==2.25.1
-- yfinance==0.1.63
-- datetime
-<br>
 
   
 # Credits/Acknowledgement
 
 Project: [Robinhood-Trading-Journal]（https://github.com/virajkothari7/Robinhood-Trading-Journal)
 <br>
-
-# License [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/virajkothari7/Robinhood-trading-journal/blob/main/LICENSE)
-
-This project is licensed under MIT. You are responsible for using robinhood's private api and all depending third-party libraries by running the scripts, look robinhood's and respective python libraries terms of use.
-

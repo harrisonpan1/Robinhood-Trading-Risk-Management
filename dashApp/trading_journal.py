@@ -7,7 +7,7 @@ from login import Robinhood
 from robin_stocks.robinhood import stocks, options, helper
 
 
-def adj_uvix_uvix3(df):
+def _adj_uvix_uvix3(df):
     uvix_map = (
         df[df["chain_symbol"] == "UVIX"]
         .set_index(["expiration_date", "strike_price", "option_type"])["option_id"]
@@ -419,21 +419,21 @@ def option_order_journal(df_orders, start_date=None, end_date=None):
     ), pd.DataFrame(open_positions).sort_values(by="expDate", ascending=False)
 
 
-def calculate_summary(group):
-    """
-    Calculates the total quantity and weighted average price for a group.
-    """
-    total_quantity = group["quantity"].sum()
-    # Ensure there's a quantity to avoid division by zero
-    if total_quantity > 0:
-        avg_price = np.average(group["average_price"], weights=group["quantity"])
-    else:
-        avg_price = 0
+# def calculate_summary(group):
+#     """
+#     Calculates the total quantity and weighted average price for a group.
+#     """
+#     total_quantity = group["quantity"].sum()
+#     # Ensure there's a quantity to avoid division by zero
+#     if total_quantity > 0:
+#         avg_price = np.average(group["average_price"], weights=group["quantity"])
+#     else:
+#         avg_price = 0
 
-    return pd.Series({"quantity": total_quantity, "avg_price": avg_price})
+#     return pd.Series({"quantity": total_quantity, "avg_price": avg_price})
 
 
-def sign_from_side(row):
+def _sign_from_side(row):
     # For options, 'buy' is long, 'sell' is short
     return 1 if row["type"] == "long" else -1
 
@@ -488,7 +488,7 @@ def greeks_manager(rh_obj):
     for col in greek_cols:
         df_greeks[col] = pd.to_numeric(df_greeks[col], errors="coerce")
     df_greeks["quantity"] = pd.to_numeric(df_greeks["quantity"], errors="coerce")
-    df_greeks["sign"] = df_greeks.apply(sign_from_side, axis=1)
+    df_greeks["sign"] = df_greeks.apply(_sign_from_side, axis=1)
 
     def agg_greeks(group):
         result = {}
@@ -552,7 +552,7 @@ if __name__ == "__main__":
         # Load the option orders DataFrame
         option_orders_df = pd.read_csv("./data/option_orders.csv")
         # Adjust UVIX and UVIX3 option IDs
-        option_orders_df = adj_uvix_uvix3(option_orders_df)
+        option_orders_df = _adj_uvix_uvix3(option_orders_df)
         option_journal_df, open_positions_df = option_order_journal(
             option_orders_df, start_date="2024-01-01"
         )
