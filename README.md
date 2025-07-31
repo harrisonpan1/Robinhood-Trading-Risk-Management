@@ -4,10 +4,10 @@ This project is python scripts, which uses supported Robinhood API, [robin_stock
 creating visualized trading journal. You can varify and download to use it as personal trading journal for Robinhood and option risk management. 
 <br><br>
 
-> **Note: robin_stocks package was [not fully updated](https://stackoverflow.com/questions/79291035/robin-stocks-robinhood-authentication-stopped-working). Need to pull the repo manually instead of pip update.** 
+> **Note: robin_stocks package was [not fully updated](https://stackoverflow.com/questions/79291035/robin-stocks-robinhood-authentication-stopped-working). Need to pull the repo manually instead of pip update. You can just pull from my forked version since i have made some updates in the robin_stocks source code** 
 ~~~
 >> cd [PATH]/Robinhood-trading-journal/dashApp
->> git clone https://github.com/jmfernandes/robin_stocks.git
+>> git clone https://github.com/harrisonpan1/robin_stocks.git
 >> cd robin_stocks
 >> pip install .
 ~~~
